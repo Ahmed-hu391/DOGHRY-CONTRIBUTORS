@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0d1425">
+    <title>دُغري | مساهمين دُغري</title>
+    <link rel="icon" href="assets/logo-removebg-preview.png">
+    <meta name="description" content="دُغري — ساهم بمعلومة عن المواصلات، وإحنا نراجعها قبل ما تظهر للناس.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="intro" id="intro" aria-hidden="true">
+        <div class="intro-ring ring-one"></div>
+        <div class="intro-ring ring-two"></div>
+        <div class="intro-glow"></div>
+        <div class="intro-content">
+            <div class="intro-logo-wrap"><img src="assets/logo-removebg-preview.png" alt="دُغري"></div>
+            <div class="intro-title">أهلاً بمساهمين دُغري</div>
+            <div class="intro-subtitle">كل معلومة بتساعد حد يعرف طريقه.</div>
+            <div class="intro-line"><span id="introProgress"></span></div>
+            <div class="intro-loading"><span id="introPercent">0%</span><span>جاري تجهيز دُغري...</span></div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <header class="header">
+        <nav class="nav container">
+            <a class="brand" href="#home"><img src="assets/logo-removebg-preview.png" alt="دُغري"><strong>دُغري</strong></a>
+            <div class="desktop-links">
+                <a class="active" href="#home">الرئيسية</a>
+                <a href="#contribute">ساهم</a>
+                <a href="#contributors">المساهمين</a>
+                <a href="#team">الفريق</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-btn" id="themeToggle" aria-label="تغيير المظهر"><span id="themeIcon">☾</span></button>
+                <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة"><i></i><i></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer" id="drawer">
+        <div class="drawer-top">
+            <a class="brand" href="#home"><img src="assets/logo-removebg-preview.png" alt="دُغري"><strong>دُغري</strong></a>
+            <button class="drawer-close" id="drawerClose" aria-label="إغلاق">×</button>
+        </div>
+        <div class="drawer-links">
+            <a class="active" href="#home">الرئيسية <span>↙</span></a>
+            <a href="#contribute">ساهم <span>↙</span></a>
+            <a href="#contributors">المساهمين <span>↙</span></a>
+            <a href="#team">الفريق <span>↙</span></a>
+        </div>
+        <div class="drawer-footer">دُغري — بنسهّل الطريق من الناس للناس.</div>
+    </aside>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-dot dot-one"></div>
+            <div class="hero-dot dot-two"></div>
+            <div class="container hero-inner">
+                <div class="hero-copy reveal">
+                    <div class="eyebrow"><span></span> دُغري بيبدأ من الناس</div>
+                    <h1>عارف الطريق؟<br><em>خلي غيرك يعرفه.</em></h1>
+                    <p>إنت عارف موقف أو خط مواصلات؟ شاركنا اللي تعرفه. المعلومة بتتراجع الأول، وبعدها بس نعتمدها في دُغري.</p>
+                    <div class="hero-actions">
+                        <a class="primary-btn" href="#contribute">ساهم بمعلومة <b>↗</b></a>
+                        <a class="secondary-btn" href="#contributors">المساهمين <span>←</span></a>
+                    </div>
+                    <div class="hero-note"><span>✓</span>
+                        <div><b>مفيش معلومة بتنزل على طول</b><small>كل مساهمة بتعدّي على مراجعة الأول.</small></div>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal delay-1">
+                    <div class="visual-ring ring-a"></div>
+                    <div class="visual-ring ring-b"></div>
+                    <div class="phone-orbit-glow"></div>
+                    <div class="phone-mockup" aria-label="تجربة دُغري على الموبايل">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen">
+                            <div class="phone-status"><span>9:41</span><span>● ◐ ▰</span></div>
+                            <div class="phone-appbar">
+                                <div class="mini-brand"><img src="assets/logo-removebg-preview.png" alt="دُغري"><strong>دُغري</strong></div>
+                                <span class="online-dot"></span>
+                            </div>
+                            <div class="phone-map">
+                                <i class="map-road map-road-1"></i><i class="map-road map-road-2"></i><i class="map-road map-road-3"></i>
+                                <span class="map-pin map-pin-start">A</span><span class="map-pin map-pin-end">B</span>
+                                <span class="map-place">المنصورة</span>
+                                <div class="phone-route-glow"></div>
+                            </div>
+                            <div class="phone-chat">
+                                <div class="chat-label"><span>مساعد دُغري</span><b>دردشة</b></div>
+                                <div class="chat-bubble bot">أهلاً بيك 👋<br>قولّي رايح فين؟</div>
+                                <div class="chat-bubble user">جامعة المنصورة</div>
+                                <div class="chat-bubble bot small">تركب ميكروباص من موقف الجامعة<br>وتنزل عند المشاية.</div>
+                            </div>
+                            <div class="phone-bottom"><span>الطريق المقترح</span><strong>دُغري ←</strong></div>
+                        </div>
+                    </div>
+                    <div class="phone-float phone-float-one"><span></span> معلومة جديدة</div>
+                    <div class="phone-float phone-float-two"><strong>+20</strong> نقطة</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ticker">
+            <div class="ticker-track"><span>دُغري</span><b>•</b><span>انتا تضيف معلومه جديد  </span><b>•</b><span>بتتراجع الأول</span><b>•</b><span>ولو صح تفيد جميع الاشخاص  </span><b>•</b><span>دُغري</span></div>
+        </div>
+
+        <section class="section contribute" id="contribute">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div><span class="kicker">02 / ساهم</span>
+                        <h2>إنت عارف معلومة؟<br><em>قولها وفيد بيها غيرك.</em></h2>
+                    </div>
+                    <p>اختار إنت عايز تضيف إيه، جاوب على الأسئلة اللي تخصه، وإحنا نراجع المعلومة قبل اعتمادها.</p>
+                </div>
+
+                <div class="review-banner reveal">
+                    <div class="review-icon">✓</div>
+                    <div><strong>المعلومة بتتراجع الأول</strong><span>مساهمتك بتوصل للمراجعة، ومش بتظهر كمعلومة معتمدة غير بعد التأكد منها.</span></div>
+                    <div class="review-steps"><span>إرسال</span><i>→</i><span>مراجعة</span><i>→</i><span>اعتماد</span></div>
+                </div>
+
+                <div class="contribution-shell reveal delay-1">
+                    <div class="choice-panel">
+                        <div class="choice-intro"><span>استبيان دُغري</span>
+                            <h3>تحب تضيف إيه؟</h3>
+                            <p>اختار حاجة واحدة، وهتظهرلك الأسئلة المناسبة ليها بس.</p>
+                        </div>
+                        <div class="contribution-choices" id="contributionChoices">
+                            <button type="button" class="contribution-choice" data-type="route"><span class="choice-icon">🚌</span><span><strong>أضيف خط مواصلات</strong><small>خط جديد وطريقه</small></span><b>←</b></button>
+                            <button type="button" class="contribution-choice" data-type="stop"><span class="choice-icon">📍</span><span><strong>أضيف موقف أو نقطة ركوب</strong><small>موقف معروف أو نقطة ركوب</small></span><b>←</b></button>
+                            <button type="button" class="contribution-choice" data-type="correction"><span class="choice-icon">✏️</span><span><strong>أصحح معلومة</strong><small>معلومة موجودة محتاجة تعديل</small></span><b>←</b></button>
+                            <button type="button" class="contribution-choice" data-type="driver"><span class="choice-icon">🚐</span><span><strong>أنا سائق</strong><small>عندك معلومات من الطريق نفسه</small></span><b>←</b></button>
+                        </div>
+                    </div>
+
+                    <div class="survey" id="surveyBox" aria-hidden="true">
+                        <div class="survey-head">
+                            <div><span id="surveyTypeLabel">استبيان دُغري</span>
+                                <h3 id="surveyTitle">قولنا المعلومة من الآخر.</h3>
+                            </div>
+                            <button type="button" class="back-choice" id="backToChoices">تغيير الاختيار</button>
+                        </div>
+
+                        <form id="contributionForm">
+                            <input type="hidden" id="contributionType" value="">
+                            <div class="form-section-title"><b>01</b>
+                                <div><small>بياناتك</small><strong>اسمك ورقمك</strong></div>
+                            </div>
+                            <div class="field-grid">
+                                <label class="field"><span>الاسم</span><input id="contributorName" type="text" autocomplete="name" placeholder="اكتب اسمك" required></label>
+                                <label class="field"><span>رقم الموبايل</span><input id="contributorPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="01xxxxxxxxx" pattern="^01[0125][0-9]{8}$" title="اكتب رقم موبايل مصري مكوّن من 11 رقم" required></label>
+                            </div>
+                            <p class="privacy-note">رقمك بيتحفظ للتواصل معاك عند الحاجة، ومش بيظهر في لوحة المساهمين.</p>
+
+                            <div class="dynamic-fields" id="routeFields">
+                                <div class="form-section-title spaced"><b>02</b>D
+                                    <div><small>الخط</small><strong>اكتب معلومات المكان الي انتا عارفها</strong></div>
+                                </div>
+                                <div class="field-grid"><label class="field"><span>المكان الي عايش فيه حاليا فين ؟</span><input id="routeFrom" type="text" placeholder="مثال: موقف الجامعة"></label><label class="field"><span>اكتب اسم المكان الي هتدي معلومات عنه</span><input id="routeTo" type="text" placeholder="مثال: شارع الجيش"></label></div>
+                                <label class="field full"><span>قولنا ازاي نروح للمكان دا بي التفصيل </span><textarea id="routeStops" rows="4" placeholder="اكتب المواقف أو العلامات المعروفة بالترتيب..."></textarea></label>
+                                <div class="field-grid"><label class="field"><span>نوع المواصلات</span><select id="routeTransport"><option>ميكروباص</option><option>سرفيس</option><option>أتوبيس</option><option>تاكسي</option><option>غير ذلك</option></select></label><label class="field"><span>السعر لو تعرفه</span><input id="routeFare" type="text" placeholder="مثال: 7 جنيه"></label></div>
+                            </div>
+
+                            <div class="dynamic-fields" id="stopFields">
+                                <div class="form-section-title spaced"><b>02</b>
+                                    <div><small>الموقف</small><strong>مكانه فين؟</strong></div>
+                                </div>
+                                <div class="field-grid"><label class="field"><span>اسم الموقف</span><input id="stopName" type="text" placeholder="مثال: موقف سندوب"></label><label class="field"><span>المنطقة</span><input id="stopArea" type="text" placeholder="مثال: المنصورة"></label></div>
+                                <label class="field full"><span>بتوصل له إزاي؟</span><textarea id="stopDetails" rows="4" placeholder="اكتب علامة قريبة أو المكان اللي الناس تعرفه..."></textarea></label>
+                                <label class="field full"><span>المواصلات اللي بتقف هنا</span><input id="stopTransport" type="text" placeholder="مثال: ميكروباص الجامعة"></label>
+                            </div>
+
+                            <div class="dynamic-fields" id="correctionFields">
+                                <div class="form-section-title spaced"><b>02</b>
+                                    <div><small>تصحيح</small><strong>إيه اللي محتاج يتعدل؟</strong></div>
+                                </div>
+                                <label class="field full"><span>المعلومة أو الخط</span><input id="correctionSubject" type="text" placeholder="مثال: خط الجامعة - المشاية"></label>
+                                <label class="field full"><span>التصحيح</span><textarea id="correctionDetails" rows="5" placeholder="اكتب المعلومة الصح بالتفصيل..."></textarea></label>
+                            </div>
+
+                            <div class="dynamic-fields" id="driverFields">
+                                <div class="form-section-title spaced"><b>02</b>
+                                    <div><small>معلومات الطريق</small><strong>قولنا اللي تعرفه</strong></div>
+                                </div>
+                                <div class="field-grid"><label class="field"><span>الخط</span><input id="driverRoute" type="text" placeholder="اسم الخط أو الموقف"></label><label class="field"><span>نوع المواصلات</span><select id="driverTransport"><option>ميكروباص</option><option>سرفيس</option><option>أتوبيس</option><option>تاكسي</option></select></label></div>
+                                <label class="field full"><span>الطريق والمواقف</span><textarea id="driverDetails" rows="5" placeholder="اكتب الطريق والمواقف وأي معلومة مفيدة..."></textarea></label>
+                                <label class="field full"><span>ملاحظة <small>(اختياري)</small></span><input id="driverExtra" type="text" placeholder="أي حاجة مهمة عن الخط"></label>
+                            </div>
+
+                            <button class="submit-btn" type="submit">إرسال للمراجعة <b>↗</b></button>
+                            <p class="form-note">بعد الإرسال، المعلومة تدخل المراجعة الأول. وبعد اعتمادها، الاسم يقدر يظهر في لوحة المساهمين.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contributors" id="contributors">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div><span class="kicker">03 / المساهمين</span>
+                        <h2>لوحة<br><em>المساهمين.</em></h2>
+                    </div>
+                    <p>لو ساهمت بمعلومة واتراجعت واتعتمدت، اسمك هيظهر هنا تلقائيًا وممكن تكسب اشتراك برايم مجانا.</p>
+                </div>
+                <div class="empty-board reveal delay-1" id="contributorsEmpty">
+                    <div class="empty-mark">+</div>
+                    <h3>مفيش مساهمين ظاهرين دلوقتي</h3>
+                    <p>لسه مفيش مساهمة اتعتمدت. أول ما مساهمة تتراجع وتتعتمد، اسم صاحبها هيظهر هنا تلقائيًا.</p>
+                    <a href="#contribute">كن أول مساهم <span>↗</span></a>
+                </div>
+                <div class="contributors-grid" id="contributorsGrid" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section class="section team" id="team">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <div><span class="kicker">04 / الفريق</span>
+                        <h2>فريق <br><em>دُغري.</em></h2>
+                    </div>
+                    <p>تلاتة صحاب بيحاولو يحلو مشكله بتقابل معظم الناس.</p>
+                </div>
+                <div class="team-grid">
+                    <article class="team-card reveal">
+                        <div class="team-crown" aria-hidden="true">♛</div>
+                        <div class="team-photo">
+                            <!-- غيّر مسار الصورة هنا فقط --><img src="assets/ahmed.jpg" alt="Ahmed Abdelhamid"></div>
+                        <div class="team-card-meta"><span>Founder</span>
+                            <h3 dir="ltr">Ahmed Abdelhamid</h3>
+                        </div>
+                    </article>
+                    <article class="team-card reveal delay-1">
+                        <div class="team-crown" aria-hidden="true">♛</div>
+                        <div class="team-photo">
+                            <!-- غيّر مسار الصورة هنا فقط --><img src="assets/moheab.jpg" alt="Ahmed Moheib"></div>
+                        <div class="team-card-meta"><span>Founder</span>
+                            <h3 dir="ltr">Ahmed Moheib</h3>
+                        </div>
+                    </article>
+                    <article class="team-card reveal delay-2">
+                        <div class="team-crown" aria-hidden="true">♛</div>
+                        <div class="team-photo">
+                            <!-- غيّر مسار الصورة هنا فقط --><img src="assets/syoda.jpg" alt="EL-Sayed EL-Refa3e"></div>
+                        <div class="team-card-meta"><span>Founder</span>
+                            <h3 dir="ltr">EL-Sayed EL-Refa3e</h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <a class="brand" href="#home"><img src="assets/logo-removebg-preview.png" alt="دُغري"><strong>دُغري</strong></a><span>طريقك بقا اسهل مما تتخيل.</span><a href="#home">لفوق ↑</a></div>
+    </footer>
+    <div class="toast" id="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
