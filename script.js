@@ -21,7 +21,7 @@ async function runIntro() {
   const progressBar = document.getElementById('introProgress');
   const progressText = document.getElementById('introPercent');
   const assetsToLoad = [
-    'assets/logo.svg','assets/logo2.svg','assets/ahmed.jpg','assets/moheib.jpg','assets/syoda.jpg'
+    'assets/logo-removebg-preview.png','assets/ahmed.jpg','assets/moheab.jpg','assets/syoda.jpg'
   ];
   const started = performance.now();
   const total = assetsToLoad.length + 1;
@@ -161,7 +161,9 @@ function updateActiveNav(){
   sections.forEach(section=>{if(point>=section.offsetTop) current=section.id;});
   navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+current));
 }
-window.addEventListener('scroll',updateActiveNav,{passive:true}); updateActiveNav();
+let navTick=false;
+window.addEventListener('scroll',()=>{if(navTick)return;navTick=true;requestAnimationFrame(()=>{navTick=false;updateActiveNav();});},{passive:true});
+updateActiveNav();
 
 function showToast(message){
   toast.textContent=message; toast.classList.add('show'); clearTimeout(showToast.timer);
@@ -205,10 +207,13 @@ function openSurvey(type){
   surveyBox.setAttribute('aria-hidden','false');
   setRequired(type);
   // No second page scroll here: the form opens exactly where the user clicked.
-  setTimeout(()=>{
-    const firstField = surveyBox.querySelector('#contributorName');
-    if(firstField && window.innerWidth <= 850) firstField.focus({preventScroll:true});
-  },420);
+  // على الموبايل: مانفتحش الكيبورد تلقائيًا (كان بيغطي الفورم ويعمل zoom)، بنوصّل المستخدم للفورم بهدوء
+  if(window.matchMedia('(max-width:850px)').matches){
+    setTimeout(()=>{
+      const top=surveyBox.getBoundingClientRect().top;
+      if(top>window.innerHeight*0.6 || top<60) smoothTo('#surveyBox');
+    },260);
+  }
 }
 function resetSurvey(){
   surveyBox.classList.remove('active'); surveyBox.setAttribute('aria-hidden','true');
@@ -281,7 +286,15 @@ async function loadContributors(){
     .from('approved_contributors_public')
     .select('contributor_name, points');
 
-  if(error){console.error(error);return;}
+  if(error){
+    console.error(error);
+    // نحاول مرة كمان، ولو فشلت نقول للمستخدم بدل ما اللوحة تفضل فاضية من غير سبب
+    if(!loadContributors.retried){loadContributors.retried=true;setTimeout(loadContributors,2500);return;}
+    const h=emptyBoard.querySelector('h3'),p=emptyBoard.querySelector('p');
+    if(h)h.textContent='مقدرناش نحمّل لوحة المساهمين';
+    if(p)p.textContent='اتأكد من النت وجرّب تاني.';
+    return;
+  }
   if(!data || data.length===0) return; // keep empty state as-is
 
   const stats={};
@@ -296,7 +309,10 @@ async function loadContributors(){
 
   const escapeHTML = value => String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[char]));
 
-  grid.innerHTML=names.map((name,index)=>{
+  const BOARD_PAGE=10;
+  let shownCount=BOARD_PAGE;
+  const renderBoard=()=>{
+  grid.innerHTML=names.slice(0,shownCount).map((name,index)=>{
     const initial=escapeHTML(name.trim().charAt(0).toUpperCase());
     const safeName=escapeHTML(name);
     const count=stats[name].count;
@@ -312,6 +328,17 @@ async function loadContributors(){
       ${rank===1 ? '<div class="gold-crown" aria-hidden="true">♛</div>' : ''}
     </div>`;
   }).join('');
+  let more=document.getElementById('boardMore');
+  if(!more){
+    more=document.createElement('button');more.type='button';more.id='boardMore';more.className='board-more';
+    grid.insertAdjacentElement('afterend',more);
+    more.addEventListener('click',()=>{shownCount+=BOARD_PAGE;renderBoard();});
+  }
+  more.hidden=shownCount>=names.length;
+  more.textContent=`عرض الباقي (${names.length-shownCount})`;
+  grid.querySelectorAll('.scroll-reveal').forEach(el=>el.classList.add('visible'));
+  };
+  renderBoard();
 
   emptyBoard.style.display='none';
   grid.setAttribute('aria-hidden','false');
