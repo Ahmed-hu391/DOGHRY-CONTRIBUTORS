@@ -1,0 +1,105 @@
+/* =====================================================================
+   دُغري — إصلاحات الموبايل (يتحمّل بعد style.css)
+   ===================================================================== */
+
+/* 1) السبب الرئيسي لمشكلة لوحة المساهمين:
+   لمعة كارت "المركز الأول" كانت بتخرج برا حدود الكارت وتوسّع الصفحة أكتر من عرض الشاشة.
+   بنقص الخارج أفقيًا بس، والتاج والشارة اللي فوق الكارت يفضلوا ظاهرين. */
+.contributor-card.top-contributor{overflow-x:clip!important;overflow-y:visible!important}
+.contributors{overflow:hidden}
+.contribute,.team,.hero,.ticker{overflow-x:clip}
+html{overflow-x:hidden}
+body{overflow-x:hidden;max-width:100%}
+img,svg,video{max-width:100%}
+
+/* 2) الموبايل والتابلت */
+@media(max-width:850px){
+  /* iOS بيعمل zoom تلقائي لو خط الحقل أصغر من 16px، وده بيبوّظ الفورم */
+  input,select,textarea,.field input,.field textarea,.field select{font-size:16px!important}
+  .field input,.field textarea,.field select{padding:13px 14px!important}
+  .field textarea{min-height:110px}
+
+  /* أداء أخف: من غير حركات مستمرة وبلور تقيل */
+  .hero-orbit,.hero-dot,.visual-ring,.intro-ring,.intro-glow,.phone-orbit-glow{animation:none!important}
+  .cursor-glow{display:none!important}
+  .scroll-reveal{filter:none!important;will-change:auto!important}
+  .nav{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .drawer-backdrop{backdrop-filter:none}
+
+  /* أهداف لمس مريحة */
+  .theme-btn,.menu-btn,.drawer-close{width:44px;height:44px}
+  .drawer-links a{min-height:52px}
+  .contribution-choice{min-height:72px}
+  .submit-btn,.primary-btn,.back-choice{min-height:48px}
+}
+
+/* 3) الموبايل الصغير: نصوص مقروءة (كانت 7–10px) */
+@media(max-width:600px){
+  .kicker,.eyebrow{font-size:12px}
+  .section-heading>p{font-size:14px;line-height:1.9}
+  .hero-copy>p{font-size:14px;line-height:2}
+  .hero-note small,.review-banner>div:nth-child(2) span,.choice-intro p,.form-note,.privacy-note{font-size:12.5px;line-height:1.9}
+  .choice-intro span,.form-section-title small,.survey-head span{font-size:12px}
+  .contribution-choice strong{font-size:15px}
+  .contribution-choice small{font-size:12.5px}
+  .field>span,.field span{font-size:13.5px}
+  .field input::placeholder,.field textarea::placeholder{font-size:14px}
+  .empty-board p{font-size:13.5px;line-height:1.9}
+  .footer-inner a,.footer-inner span{font-size:13px}
+
+  /* لوحة المساهمين */
+  .contributors-grid{grid-template-columns:minmax(0,1fr)!important;gap:12px}
+  .contributor-card{padding:20px 16px 16px;min-height:88px;gap:12px}
+  .contributor-card .contributor-avatar{width:48px;height:48px;flex:none}
+  .contributor-info{padding-top:6px}
+  .contributor-info strong{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere;font-size:15.5px;line-height:1.5}
+  .contributor-info small{font-size:12.5px;line-height:1.7}
+  .contributor-rank{font-size:12px;top:10px;left:14px}
+  .contributor-card.top-contributor{margin-top:26px}
+  .contributor-card.top-contributor::before{font-size:11px}
+  .contributor-card.top-contributor .contributor-info strong{font-size:17px}
+  .board-more{display:flex;width:100%;justify-content:center;margin-top:14px}
+}
+
+/* زرار "عرض الباقي" في لوحة المساهمين */
+.board-more{display:flex;align-items:center;justify-content:center;gap:8px;margin:18px auto 0;min-height:48px;padding:0 22px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-weight:700;font-size:14px}
+.board-more:hover{border-color:var(--gold)}
+.board-more[hidden]{display:none}
+
+/* 4) شاشات صغيرة جدًا (320px) */
+@media(max-width:360px){
+  .hero-copy h1{font-size:44px;letter-spacing:-2px}
+  .section-heading h2{font-size:38px}
+  .container{width:calc(100% - 24px)}
+}
+
+/* 5) القائمة الجانبية: ظلّها كان بيظهر كتشويحة رمادي على حافة الشاشة وهي مقفولة */
+.drawer{visibility:hidden;box-shadow:none;transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s linear .55s,box-shadow .3s}
+.drawer.open{visibility:visible;box-shadow:-35px 0 100px rgba(0,0,0,.22);transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s,box-shadow .3s}
+
+/* 6) نصوص الفورم على الموبايل */
+@media(max-width:600px){
+  .back-choice{font-size:12.5px;padding:10px 12px}
+  .survey-head h3{font-size:20px}
+  .form-section-title strong{font-size:16px}
+  .form-section-title b{font-size:13px}
+  .review-steps span{font-size:12px}
+  .privacy-note,.form-note{font-size:12.5px}
+}
+
+/* 7) خفّة الأداء على الموبايل: بنوقّف الحركات الزخرفية المستمرة (بتستهلك المعالج والبطارية وبتعمل اللاج).
+   الشكل بيفضل زي ما هو، بس من غير حركة مستمرة. الـ ticker بس هو اللي بيفضل شغال. */
+@media(max-width:850px){
+  .phone-mockup,.phone-orbit-glow,.phone-float,.hero-dot,.hero-orbit,.visual-ring,
+  .team-crown,.gold-crown,.contributor-card.top-contributor,
+  .contributor-card.top-contributor::after,.contributor-card.top-contributor .gold-crown,
+  .chat-bubble,.logo-card,.float-chip,.online-dot,.empty-board::before,.empty-board::after,
+  .hero-person,.hero-team-glow,.hero-team-badge,.team-card{animation:none!important}
+  .team-crown,.gold-crown{filter:none!important}
+  .contributor-card.top-contributor::after{display:none}
+  .logo-card,.float-chip,.visual-ring,.hero-orbit,.empty-board::before,.empty-board::after,.ticker-track,
+  .scroll-reveal,.reveal{will-change:auto!important}
+  .scroll-reveal{transition-duration:.45s!important}
+  .contributor-card,.team-card,.contribution-choice{box-shadow:0 8px 24px rgba(10,15,30,.08)!important}
+  .contributor-card.top-contributor{box-shadow:0 10px 30px rgba(184,137,35,.25)!important}
+}
